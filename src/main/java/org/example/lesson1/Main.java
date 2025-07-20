@@ -11,25 +11,49 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Cat milka = new Cat();
 
         Scanner scanner = new Scanner(System.in);
+        String name = "";
+        String colour = "";
+        int age = 0;
 
         System.out.println("Give the name for your cat!\n");
-        milka.setName(scanner.nextLine());
+        name = scanner.nextLine();
 
         System.out.println("How old is your cat?");
-        milka.setAge(scanner.nextInt());
+        age = scanner.nextInt();
 
         System.out.println("What colour is your cat?");
-        milka.setColour(scanner.nextLine());
+        colour = scanner.nextLine();
 
         System.out.println();
         System.out.println("So, info about your cat: ");
-        milka.setColour(scanner.nextLine());
 
-        System.out.println(milka);
+        Main main = new Main();
 
+        Cat cat = main.createCat(name, colour, age);
+
+        System.out.println(cat.toString());
+
+        name = "Vasya";
+        colour = "black";
+        age = 4;
+
+        System.out.println(main.updateCat(name, colour, age, cat).toString());
 
     }
+
+    public Cat createCat(String name, String colour, int age){
+        return new Cat(name, colour, age);
+    }
+
+    public Cat updateCat(String name, String colour, int age, Cat cat){
+
+        cat.setName(name);
+        cat.setColour(colour);
+        cat.setAge(age);
+
+        return cat;
+    }
+
 }
